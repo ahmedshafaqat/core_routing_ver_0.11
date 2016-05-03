@@ -1,0 +1,6 @@
+curl "https://graphhopper.com/api/1/route?point=-37.8132%2C144.9633&point=-37.803%2C144.9501&vehicle=bus&locale=en&elevation=true&type=json&debug=true&type=json&points_encoded=true&key=420ba915-44d1-4616-a21e-010e1516b42c"
+
+
+
+
+curl "https://open.mapquestapi.com/elevation/v1/profile?key=2rSNU0UEGDP6Tbl1pWJkTIoYDBNyGnbAE&callback=bus_routing_ver_0.1&shapeFormat=raw&latLngCollection=39.74012,-104.9849,39.7995,-105.7237,39.6404,-106.3736"

@@ -1,0 +1,44 @@
+{
+    "vehicles" : [{
+      "vehicle_id" : "vehicle1",
+      "start_address" : {
+          "location_id" : "v1_startLoc",
+          "lon": -34.928589,
+          "lat": 138.19994289999997
+      },
+      "type_id" : "vehicle_type_1"
+    }],
+    "vehicle_types" : [{
+      "type_id" : "vehicle_type_1",
+      "profile" : "car"
+    }],
+    "services" : [
+      {
+        "id": "b1",
+        "name": "drink_bionade_in_rostock",
+        "address": {
+          "location_id": "loc_b1",
+          "lon": -34.928589,
+          "lat": 138.59994289999997
+        }
+      },
+      {
+        "id": "b2",
+        "name": "drink_cola_in_berlin",
+        "address": {
+          "location_id": "loc_b2",
+          "lon": -33.928589,
+          "lat": 138.59994289999997
+        }
+      },
+      {
+        "id": "b3",
+        "name": "drink_juice_in_ulm",
+        "address": {
+          "location_id": "loc_b3",
+           "lon": -34.928589,
+          "lat": 137.59994289999997
+        }
+      }
+  ]
+}

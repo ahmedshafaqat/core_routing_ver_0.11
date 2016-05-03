@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.css" />
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.js"></script>
+        <script src="https://www.mapquestapi.com/sdk/leaflet/v2.s/mq-map.js?key=Kmjtd%7Cluua2qu7n9%2C7a%3Do5-lzbgq"></script>
+
+        <script type="text/javascript">
+            window.onload = function() {
+                var mapLayer = MQ.mapLayer(), map;
+
+                map = L.map('map', {
+                    layers: mapLayer,
+                    center: [ -34.928589,138.59994289999997 ],
+                    zoom: 12
+                });
+            }
+        </script>
+    </head>
+
+    <body style='border:0; margin: 0'>
+        <div id='map' style='width:1100px; height:530px;'></div>
+    </body>
+</html>

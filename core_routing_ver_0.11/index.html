@@ -1,0 +1,277 @@
+<html>
+    <head>
+         <!-- Following interafce based Graphhopper and OSM map.
+              Modified by Shafaqat Ahmed for RMIT university project
+              Its is only RMIT takeholders usage--> 
+        
+        <meta charset="utf-8"/>
+        <title>Bus Routing Software version 0.1 </title>
+        <script type="text/javascript" src="js/jquery-2.1.0.min.js"></script>                
+
+        <link rel="stylesheet" href="css/leaflet.css?v=0.7.3" />
+        <script type="text/javascript" src="js/leaflet.js?v=0.7.3"></script>        
+
+        <link rel="stylesheet" href="css/style.css" />
+
+        <script type="text/javascript" src="js/bouncemarker.js"></script>
+
+
+        <!-- All the JS features and function will load here 
+             Users need to callthe function --> 
+        
+        <script type="text/javascript" src="js/GHUtil.js"></script>
+        <script type="text/javascript" src="js/GraphHopperRouting.js"></script>
+        <script type="text/javascript" src="js/GraphHopperMatrix.js"></script>
+        <script type="text/javascript" src="js/GraphHopperGeocoding.js"></script>        
+        <script type="text/javascript" src="js/GraphHopperOptimization.js?v=2"></script>
+        <script type="text/javascript" src="js/GraphHopperIsochrone.js?v=2"></script>
+        
+        <!-- This block code is created for dragable buttons -->
+        <script type="text/javascript" src="js/dragable.js?v=2"></script>
+        <script type="text/javascript" src="js/demo.js?v=2"></script>
+        
+        <!-- This is bock needed coded for bus specification and need to done by week 8-9
+        pf development 
+        <script type="text/javascript" src="js/Bus_specification.js?v=2"></script>
+        <script type="text/javascript" src="js/Weather_wind.js?v=2"></script>
+         
+        -->
+        
+    </head>
+    <body>        
+        <div id="main">
+             <div id="logo" class="left">
+                <a href="https://www.rmit.edu.au">
+                    <img src="img/rmit_logo.png" alt="RMIT Logo" height="42" width="72"/>                                   
+                </a>
+            </div>  
+            <div id="enter_key">
+                <div>
+                    <img id="custom_key_enabled" class="hide" src="img/included.png" alt="using custom API key"/>
+                    <input id="custom_key_input" placeholder="Enter overwrite key"/>
+                    <button id="custom_key_button">Overwrite key</button>
+                </div>
+               
+            </div>
+
+            <h2 class="right">Bus Routing Software version 0.1</h2>
+           <!-- hereis all menu options can be changed on David Tylers choice --> 
+            <div class="clear"></div>
+            <div class="horizontal">                
+                <ul id="mynavigation" class="tabs-menu">
+                    <li class="current"><a href="#routing">Point to Point</a></li>
+                    <li><a href="#optimization">Bus Route Optimization </a></li>
+                    <li><a href="#matrix">Bus Route Matrix</a></li>
+                    <li><a href="#geocoding">Reverse Geocoding</a></li>                    
+                    <li><a href="#isochrone">Battery Range Isochrone</a></li>
+                    
+                    <!--
+                    <li><a href="#bus_specification">Bus Specification</a></li>
+                    <li><a href="#wind_weather">Wind and Weather</a></li>                    
+                    -->
+                </ul>                
+            </div>
+
+            <div id="routing" class="tab-content">
+
+                <div style="padding-bottom: 10px;">
+                    <b>This will show shortest and efficent way between two points.</b>
+                     
+                    <!--
+                    The Routing API calculates the best path between two or more locations. 
+                    Calculate your own route via clicking on the map and try 
+                    <a href="https://graphhopper.com/maps">GraphHopper Maps</a> for a more advanced 
+                    routing demo.
+                    -->
+                </div>
+                <br/>
+
+                <div id="routing-response" style="float: right; padding-left: 20px;">
+
+                </div>
+                <div id="routing-error" style="float: right; padding-left: 20px;">
+                </div>
+
+                <div id="routing-map" style="cursor: default; height:600px; width: 800px;"></div>
+
+                <div id="instructions-header">
+                    Click to see instructions for route
+                    <div id="instructions" class="hide"></div>
+                </div>
+
+            </div>
+
+            <div id="optimization" class="tab-content">
+                
+                <div id="button-list" class="right">
+                    vehicles:
+                    <input id="optimize_vehicles" style="max-width: 60px" type="number" min="1" max="1" value="1"/>
+                    <button id="optimize_button">Optimize</button>
+                    <button id="vrp_clear_button">Clear</button>
+                </div>
+
+            <div class="clear"></div>
+                <div id="vrp-map-wrapper">
+                    <div id="vrp-map" style="cursor: default; height:550px; width: 600px;"></div>
+                   <div id="example-list">
+                        <div class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)">
+                            <button id="#dragable_buttons_1" ondragstart="dragStart(event)" ondrag="dragging(event)" draggable="true" id="dragtarget">Route 101</button>
+                            <button id="#dragable_buttons_2" ondragstart="dragStart(event)" ondrag="dragging(event)" draggable="true" id="dragtarget">Route 102</button>
+                            <button id="#dragable_buttons_3" ondragstart="dragStart(event)" ondrag="dragging(event)" draggable="true" id="dragtarget">Route 103</button>
+                             <button id="#dragable_buttons_4" ondragstart="dragStart(event)" ondrag="dragging(event)" draggable="true" id="dragtarget">Route 104</button>
+                        </div>
+
+                            <div class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)" >
+                                <label for="route">Drop routes</label>
+                            </div>
+                   
+                </div>
+                <div class="clear"></div>
+                <div id="vrp-error" style="float: right; padding-left: 20px;">
+                </div>
+
+                <div id="vrp-response" style="float: right; padding-left: 20px;">
+                </div>
+            </div>
+
+            <div id="geocoding" class="tab-content">
+                <div>
+                    The Geocoding API converts address text into coordinates shown on the map or try "reverse geocoding" via clicking on the map.
+                </div>
+                <br/>
+                <input id="geocoding_text_field" type="text" placeholder="Your address"/>
+                <input id="geocoding_search_button" type="button" value="Search"/>
+                <div id="geocoding-error">
+
+                </div>
+                <div id="geocoding-response">
+                </div>
+                <div id="geocoding-map" style="cursor: default; height:550px; width: 600px;"></div>
+
+            </div>
+
+            <div id="matrix" class="tab-content">
+               
+               <!--
+                <div>
+                    The Matrix API calculates distances or times between many locations E.g. 1 to 5 or 4 to 4 like in the following example.
+                    Click on the produced links to see the actual route on GraphHopper Maps.
+                </div>
+                <br/>
+                -->
+                <form>
+                    <div>
+                        <input class="point" type="text" value="-34.928589,138.49994289999997">
+                    </div>
+                    <div>
+                        <input class="point" type="text" value="-34.928589,138.59994289999997">
+                    </div>
+                    <div>
+                        <input class="point" type="text" value="-34.928589,138.39994289999997>
+                    </div>
+                    <div>
+                        <input class="point" type="text" value="-34.828589,138.59994289999997">
+                    </div>
+
+                    <input id="matrix_search_button" type="button" value="Search">
+                </form>
+
+                <div id="matrix-response">
+                </div>
+
+                <div id="matrix-error">
+                </div>
+            </div>
+
+            <div id="isochrone" class="tab-content">
+ 
+            <!--
+ 
+                <div style="padding-bottom: 10px;">
+                    The Isochrone API calculates the reach of a location. 
+                    Calculate the it via clicking on the map.
+                    The inner area is reachable within 5 minutes (green) and 
+                    the outer area is reachable within 10 minutes (blue).
+                </div>
+                
+                -->
+                <br/>
+
+                <div id="isochrone-response" style="float: right; padding-left: 20px;">
+
+                </div>
+                <div id="isochrone-error" style="float: right; padding-left: 20px;">
+                </div>
+
+                <div id="isochrone-map" style="cursor: default; height:600px; width: 800px;"></div>               
+            </div>
+        </div>
+        
+         <!-- this area needs attention 
+             <div id="bus_specification" class="tab-content">
+              <br/>
+              
+              
+              <!--
+                  
+                  
+                  ////////////////////////////////////////////
+                  Note: code bus specification 
+                  +++++++++++++++++++++++++++++++++++++++++++++
+                  +++++++++++++++++++++++++++++++++++++++++++++
+                  Probale Battery Configurations
+              
+              
+              
+              </div>
+              
+            <!-- this area needs attention -->
+            <!--
+             <div id="weather_wind" class="tab-content">
+                 
+                 
+                  
+                  
+                  ////////////////////////////////////////////
+                  Note: get the weather data from BOM / WOW 
+                  +++++++++++++++++++++++++++++++++++++++++++++
+                  +++++++++++++++++++++++++++++++++++++++++++++
+                  Probale Battery Configurations
+              
+              
+         
+              
+              </div>
+                   -->
+
+        
+        
+        
+        
+        
+        
+
+        <!-- Piwik -->
+        <script type="text/javascript">
+            PIWIK = false;
+            if (PIWIK) {
+                var _paq = _paq || [];
+                _paq.push(['trackPageView']);
+                _paq.push(['enableLinkTracking']);
+                (function () {
+                    var u = (("https:" == document.location.protocol) ? "https" : "http") + "://graphhopper.com/piwik/";
+                    _paq.push(['setTrackerUrl', u + 'piwik.php']);
+                    _paq.push(['setSiteId', 1]);
+                    var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+                    g.type = 'text/javascript';
+                    g.defer = true;
+                    g.async = true;
+                    g.src = u + 'piwik.js';
+                    s.parentNode.insertBefore(g, s);
+                })();
+            }
+        </script>
+        <noscript><p><img src="https://graphhopper.com/piwik/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+        <!-- End Piwik Code -->
+    </body>
+</html>
