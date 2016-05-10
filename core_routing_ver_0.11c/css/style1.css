@@ -1,0 +1,276 @@
+body {
+     margin: none;
+}
+.lead {
+    font-size: 20px;    
+}
+
+#main, #vrp-map-wrapper {
+    margin: none; 
+    width: 800px;
+}
+
+#main li {
+    line-height: 22px;    
+}
+
+a {
+    text-decoration: none;
+    color: #3872f2;    
+}
+a:hover {
+    color: #3091f7;
+}
+
+#button-list {
+    padding: 10px;
+}
+
+#button-list button, #example-list button {
+    margin: 5px;
+}
+
+#example-list {
+    float: left;
+    max-width: 190px;    
+    margin-top: 10px;    
+}
+
+#vrp-map {
+    float: right;
+}
+
+.right {
+    float: right;
+}
+
+.left {
+    float: left;
+}
+
+.leaflet-div-icon {
+    background: transparent;
+    border: none;
+}
+
+.leaflet-marker-icon .number{
+    position: relative;
+    top: -37px;
+    font-size: 12px;
+    width: 25px;
+    text-align: center;
+}
+
+#enter_key {
+    padding-top: 10px;
+    float: right
+}
+#custom_key_input {
+    width: 340px;
+}
+#custom_key_enabled {
+    margin-bottom: -5px;
+}
+
+#vrp-error {
+    color: red;
+    font-weight: bold;
+}
+
+#vrp-error, #vrp-response {
+    padding: 10px;
+}
+
+.clear {
+    clear: both;
+}
+
+.hide {
+    display: none;
+}
+
+#custom_key_desc li {    
+    list-style-type: none;
+    padding-right: 20px;
+}
+
+#logo {
+    padding-left: 22px;
+}
+
+#get_key_link {
+    padding: 5px;
+}
+
+#instructions-header {
+    padding: 10px;
+}
+
+#instructions {
+    font-size: small;
+}
+
+.tab-content {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.small {
+    font-size: small;
+}
+
+#mynavigation {
+    border-top-color: white;
+    background-color: white;
+    margin-bottom: 0px;
+    background-image: linear-gradient(to bottom, white, #e7e7e7);
+    border-radius: 4px;
+    font-size: 0;
+    list-style-type: none;
+    margin: 5px 0px;
+    padding: 0;
+}
+
+#mynavigation li a {
+    color: black;
+}
+
+#mynavigation li:first-child {
+    border-left: medium none;
+    border-radius: 4px 0 0 4px;
+}
+#mynavigation li {
+     margin: none;
+}
+#mynavigation li {
+     /* 
+      border-left: 1px solid #ddd;
+      border-right: 1px solid #888;
+      */
+    float : right;      
+    cursor: pointer;
+    display: -webkit-inline-flex;
+    font-size: 10px;
+    padding-top: 0px;
+    padding-left: 1.1em;
+    padding-right: 1.1em;    
+    padding-bottom: 0.2em;
+    text-shadow: 0 1px 1px #f7f7f7;
+    
+  
+}
+#mynavigation {
+    list-style-type: none;
+}
+
+#mynavigation .current { 
+    border-bottom: 3px inset black;    
+}
+
+#geocoding-map {
+    margin-top: 10px;
+}
+
+
+
+
+
+
+/* sperate to Burger Menu */
+
+
+
+.top-animate {
+  background: #fff !important;
+  top: 13px !important;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.mid-animate {
+  opacity: 0;
+}
+
+.bottom-animate {
+  background: #fff !important;
+  top: 13px !important;
+  -webkit-transform: rotate(-225deg);
+  transform: rotate(-225deg);
+}
+
+.top-menu {
+  top: 5px;
+  width: 25px;
+  height: 2px;
+  border-radius: 10px;
+  background-color: #e7e7e7;
+}
+
+.mid-menu {
+  top: 13px;
+  width: 25px;
+  height: 2px;
+  border-radius: 10px;
+  background-color: #e7e7e7;
+}
+
+.bottom-menu {
+  top: 21px;
+  width: 25px;
+  height: 2px;
+  border-radius: 10px;
+  background-color: #e7e7e7;
+}
+
+.menui {
+  background: #e7e7e7;
+  transition: 0.9s ease;
+  transition-timing-function: cubic-bezier(.75, 0, .29, 1.01);
+  margin-top: 10px;
+  position: absolute;
+}
+
+.icon {
+  z-index: 999;
+  position: fixed;
+  display: block;
+  padding: 9px;
+  height: 32px;
+  width: 32px;
+  margin: 0px;
+  top: 0;
+  left: 0;
+}
+
+.mobilenav {
+  font-family: inherit;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  display: none;
+  position: fixed;
+  width: 12%;
+  height: 100%;
+  background: #e7e7e7;
+}
+/*
+Testing area
+
+*/
+.mobilenav li {
+  list-style-type: none;
+  text-align: center;
+  padding: 10px;
+}
+
+.mobilenav li a {
+  font-size: 100%;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 300;
+  width: 100%;
+}
+
+.mobilenav li:first-child {
+  margin-top: 60px;
+}

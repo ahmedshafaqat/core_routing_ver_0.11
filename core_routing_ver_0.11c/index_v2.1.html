@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <title>Core Routing 0.11c </title>
+       <!--  <script type="text/javascript" src="js/jquery-2.1.0.min.js"></script>                
+       -->
+        <script src="http://code.jquery.com/jquery-2.1.3.js"></script>
+        
+        
+        <link rel="stylesheet" href="css/leaflet.css?v=0.7.3" />
+        <script type="text/javascript" src="js/leaflet.js?v=0.7.3"></script>        
+
+        <link rel="stylesheet" href="css/style1.css" />
+
+        <script type="text/javascript" src="js/bouncemarker.js"></script>
+
+        <script type="text/javascript" src="js/GHUtil.js"></script>
+        <script type="text/javascript" src="js/GraphHopperRouting.js"></script>
+        <script type="text/javascript" src="js/GraphHopperMatrix.js"></script>
+        <script type="text/javascript" src="js/GraphHopperGeocoding.js"></script>        
+        <script type="text/javascript" src="js/GraphHopperOptimization.js?v=2"></script>
+        <script type="text/javascript" src="js/GraphHopperIsochrone.js?v=2"></script>
+        <script type="text/javascript" src="js/dragable.js?v=2"></script>
+        <script type="text/javascript" src="js/burger.js?v=2"></script>
+        
+        
+        <script type="text/javascript" src="js/drag_drop.js?v=2"></script>
+        <script type="text/javascript" src="js/demo.js?v=2"></script>
+        
+        <!-- standerd Drivers resource -->
+
+
+
+
+
+
+	<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700|Droid+Serif' rel='stylesheet' type='text/css'>
+   <!-- Right Panel Resource -->
+	<link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
+ 	<link rel="stylesheet" href="css/style2.css"> <!-- Resource style -->
+	<script src="js/modernizr.js"></script> <!-- Modernizr -->
+    <script src="js/main_2.js"></script> <!-- Resource jQuery -->
+  	<!-- Right panel Resource -->
+	<title>Slide In Panel | CodyHouse</title>
+</head>
+<body>
+	<main class="cd-main-content">  
+		<h1>Slide In Panel</h1>
+		<a href="#0" class="cd-btn">Fire Panel</a>
+		<!-- Test code area -->
+		<div id="main">
+            <!-- Test Burger Menu   -->
+            
+       <div class="mobilenav" >
+
+        <ul id="mynavigation" class="tabs-menu">
+
+        <li><a href="#routing">Routing API</a></li>
+        <li><a href="#optimization">Bus Route Optimization </a></li>
+        <li><a href="#matrix">Bus Route Matrix</a></li>
+        <li><a href="#geocoding">Geocoding API</a></li>                    
+        <li><a href="#routing">Routing API</a></li>                   
+ 
+        </div>
+
+        <a href="javascript:void(0)" class="icon">
+        <div class="hamburger">
+        <div class="menui top-menu"></div>
+        <div class="menui mid-menu"></div>
+        <div class="menui bottom-menu"></div>
+        
+        </div>
+         <!-- Test Burger Menu   -->
+            
+            
+            
+            
+            
+                 
+          <div id="main">
+          <div id="logo" class="left">
+                <a href="https://www.rmit.edu.au">
+                <img src="img/rmit_logo.png" alt="RMIT Logo" height="42" width="72"/>                                   
+                </a>
+            </div>        
+
+            <div class="clear"></div>
+            <div class="horizontal">                
+                <ul id="mynavigation" class="tabs-menu">
+                    <li class="current"><a href="#routing">Routing API</a></li>
+                    <li><a href="#optimization">Route Optimization API</a></li>
+                    <li><a href="#matrix">Matrix API</a></li>
+                    <li><a href="#geocoding">Geocoding API</a></li>                    
+                    <li><a href="#isochrone">Isochrone API</a></li>                    
+                </ul>                
+            </div>
+
+            <div id="routing" class="tab-content">
+
+              
+                <br/>
+
+                <div id="routing-response" style="float: right; padding-left: 20px;">
+
+                </div>
+                <div id="routing-error" style="float: right; padding-left: 20px;">
+                </div>
+
+                <div id="routing-map" style="cursor: default; height:70%; width: 120%;"></div>
+
+                <div id="instructions-header">
+                    Click to see instructions for route
+                    <div id="instructions" class="hide"></div>
+                </div>
+
+            </div>
+
+            <div id="optimization" class="tab-content">
+               
+
+                <div id="button-list" class="right">
+                    vehicles:
+                    <input id="optimize_vehicles" style="max-width: 60px" type="number" min="1" max="4" value="2"/>
+                    <button id="optimize_button">Optimize</button>
+                    <button id="vrp_clear_button">Clear</button>
+                </div>
+
+                <div class="clear"></div>
+                <div id="vrp-map-wrapper">
+                    <div id="vrp-map" style="cursor: default; height:550px; width: 600px;"></div>
+
+                    <div id="example-list">
+                        <div>
+                            <button id="set_example_vrp">Set Vehicle Routing</button>                
+                        </div>
+                        <div>
+                            <button id="set_example_tsp">Set Salesman</button>       
+                        </div>
+                        <div>
+                            <button id="set_example_tsp2">Set Open Salesman</button>       
+                        </div>
+                        <!--
+                        <div>
+                            <button id="set_example_us_tour">Set Beauty US Tour</button>
+                        </div>
+                        <div>
+                            <button id="set_example_uk_tour">Set Election Campaign UK</button>
+                        </div>
+                        -->
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div id="vrp-error" style="float: right; padding-left: 20px;">
+                </div>
+
+                <div id="vrp-response" style="float: right; padding-left: 20px;">
+                </div>
+            </div>
+
+            <div id="geocoding" class="tab-content">
+                
+                <br/>
+                <input id="geocoding_text_field" type="text" placeholder="Your address"/>
+                <input id="geocoding_search_button" type="button" value="Search"/>
+                <div id="geocoding-error">
+
+                </div>
+                <div id="geocoding-response">
+                </div>
+                <div id="geocoding-map" style="cursor: default; height:550px; width: 600px;"></div>
+
+            </div>
+
+            <div id="matrix" class="tab-content">
+                
+                <br/>
+                <form>
+                    <div>
+                        <input class="point" type="text" value="52.651395,13.15567">
+                    </div>
+                    <div>
+                        <input class="point" type="text" value="52.432572,13.143539">
+                    </div>
+                    <div>
+                        <input class="point" type="text" value="52.43299,13.461571">
+                    </div>
+                    <div>
+                        <input class="point" type="text" value="52.622226,13.381233">
+                    </div>
+
+                    <input id="matrix_search_button" type="button" value="Search">
+                </form>
+
+                <div id="matrix-response">
+                </div>
+
+                <div id="matrix-error">
+                </div>
+            </div>
+            <div id="routing" class="tab-content">
+
+              
+                <br/>
+
+                <div id="routing-response" style="float: right; padding-left: 20px;">
+
+                </div>
+                <div id="routing-error" style="float: right; padding-left: 20px;">
+                </div>
+
+                <div id="routing-map" style="cursor: default; height:70%; width: 120%;"></div>
+
+                <div id="instructions-header">
+                    Click to see instructions for route
+                    <div id="instructions" class="hide"></div>
+                </div>
+
+
+        <!-- Piwik -->
+        <script type="text/javascript">
+            PIWIK = false;
+            if (PIWIK) {
+                var _paq = _paq || [];
+                _paq.push(['trackPageView']);
+                _paq.push(['enableLinkTracking']);
+                (function () {
+                    var u = (("https:" == document.location.protocol) ? "https" : "http") + "://graphhopper.com/piwik/";
+                    _paq.push(['setTrackerUrl', u + 'piwik.php']);
+                    _paq.push(['setSiteId', 1]);
+                    var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+                    g.type = 'text/javascript';
+                    g.defer = true;
+                    g.async = true;
+                    g.src = u + 'piwik.js';
+                    s.parentNode.insertBefore(g, s);
+                })();
+            }
+        </script>
+        <noscript><p><img src="https://graphhopper.com/piwik/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+        <!-- End Piwik Code -->
+		
+		
+		
+		<!-- your content here -->
+	 </main> 
+
+	<div class="cd-panel from-right">
+		<header class="cd-panel-header">
+			<h1>Title Goes Here</h1>
+			<a href="#0" class="cd-panel-close">Close</a>
+		</header>
+
+		<div class="cd-panel-container">
+			<div class="cd-panel-content">
+		    <!-- Right panel contents  -->
+			
+                    
+        <li><a href="#routing">Routing API</a></li>
+        <li><a href="#optimization">Bus Route Optimization </a></li>
+        <li><a href="#matrix">Bus Route Matrix</a></li>
+        <li><a href="#geocoding">Geocoding API</a></li>                    
+        <li><a href="#isochrone">Battery Range </a></li>                    
+ 
+        </div>
+
+            <!-- Right panel contents  -->
+            </div> <!-- cd-panel-content -->
+            
+		</div> <!-- cd-panel-container -->
+	</div> <!-- cd-panel -->
+
+
+</body>
+</html>
